@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 require('dotenv').config();
 
+process.on('unhandledRejection', e => { throw e; });
+
 const client = new Discord.Client();
 const messages = [
     "Habrá un romance para ti dentro de poco", 
