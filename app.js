@@ -60,7 +60,9 @@ client.on("ready", () => {
     console.log("Bot ready", messages.length);
 });
 
-client.on('message', (message) => {
+client.on('message', gotMessage);
+
+async function gotMessage(message) {
     if (message.content.startsWith('--cookie')) {
         message.channel.send(`:fortune_cookie:${messages[Math.floor(Math.random() * messages.length)]}:fortune_cookie:`);
     } else if (message.content.startsWith('--birra')) {
@@ -68,6 +70,6 @@ client.on('message', (message) => {
     } else if (message.content.startsWith('--help')) {
         message.channel.send(`Escribe '--cookie' para probar suerte`);
     }
-});
+}
 
 client.login(process.env.KEY);
