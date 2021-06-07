@@ -63,13 +63,18 @@ client.on("ready", () => {
 client.on('message', gotMessage);
 
 async function gotMessage(message) {
-    if (message.content.startsWith('--cookie')) {
-        message.channel.send(`:fortune_cookie:${messages[Math.floor(Math.random() * messages.length)]}:fortune_cookie:`);
-    } else if (message.content.startsWith('--birra')) {
-        message.channel.send(`:cat:`);
-    } else if (message.content.startsWith('--help')) {
-        message.channel.send(`Escribe '--cookie' para probar suerte`);
+    try {
+        if (message.content.startsWith('--cookie')) {
+            message.channel.send(`:fortune_cookie:${messages[Math.floor(Math.random() * messages.length)]}:fortune_cookie:`);
+        } else if (message.content.startsWith('--birra')) {
+            message.channel.send(`:cat:`);
+        } else if (message.content.startsWith('--help')) {
+            message.channel.send(`Escribe '--cookie' para probar suerte`);
+        }
+    } catch (error) {
+        console.log(error);
     }
+
 }
 
 client.login(process.env.KEY);
