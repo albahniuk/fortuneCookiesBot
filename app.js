@@ -56,8 +56,12 @@ const messages = [
     'Hasta Rexona te abandona'
 ];
 
-client.on("ready", () => {
-    console.log("Bot ready", messages.length);
+client.on("ready", async () => {
+    try {        
+        console.log("Bot ready", messages.length);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 client.on('message', gotMessage);
@@ -74,7 +78,6 @@ async function gotMessage(message) {
     } catch (error) {
         console.log(error);
     }
-
 }
 
 client.login(process.env.KEY);
