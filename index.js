@@ -82,4 +82,5 @@ async function gotMessage(message) {
     }
 }
 
+console.log("KEEEEY",process.env.KEY);
 client.login(process.env.KEY);
