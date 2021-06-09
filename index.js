@@ -55,7 +55,10 @@ const messages = [
     'Tienes tan buenas vibras como un Satisfyer',
     'Hacienda somos todos, recuérdalo',
     'Tu animal espiritual es un Pangolín',
-    'Hasta Rexona te abandona'
+    'Hasta Rexona te abandona',
+    "¿Sabías que hace años un estudio demostró que el ser humano tiene la increible capacidad de callarse la boca? Pruébalo",
+    "Pon tu opinión en una cuenta de ahorro, a ver si así genera interés",
+    "Quédate con alguien que cree en las galletas de la fortuna. Si cree en esas mierdas también te creerá a ti"
 ];
 
 client.on("ready", async () => {
@@ -76,6 +79,12 @@ async function gotMessage(message) {
             message.channel.send(`:cat:`);
         } else if (message.content.startsWith('--help')) {
             message.channel.send(`Escribe '--cookie' para probar suerte`);
+        } else if (message.content.startsWith('--hitler')) {
+            message.channel.send('', {
+                files: [
+                    "./unnamed.png"
+                ]
+            });
         }
     } catch (error) {
         console.log(error);
