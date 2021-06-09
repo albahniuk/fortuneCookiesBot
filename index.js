@@ -1,5 +1,7 @@
-const Discord = require("discord.js");
 require('dotenv').config();
+
+const Discord = require("discord.js");
+const fetch = require('node-fetch');
 
 process.on('unhandledRejection', e => { throw e; });
 
@@ -85,6 +87,12 @@ async function gotMessage(message) {
                     "./unnamed.png"
                 ]
             });
+        } else if (message.content.startsWith('--cagarro')) {
+            const url = `https://g.tenor.com/v1/search?q=cagarro&key=${process.env.TENORKEY}&limit=8`;
+            let response = await fetch(url);
+            let json = await response.json();
+            const index = Math.floor(Math.random() * json.results.length);
+            message.channel.send(json.results[index].url);
         }
     } catch (error) {
         console.log(error);
