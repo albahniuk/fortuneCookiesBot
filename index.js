@@ -78,7 +78,11 @@ async function gotMessage(message) {
         if (message.content.startsWith('--cookie')) {
             message.channel.send(`:fortune_cookie:${messages[Math.floor(Math.random() * messages.length)]}:fortune_cookie:`);
         } else if (message.content.startsWith('--birra')) {
-            message.channel.send(`:cat:`);
+            const url = `https://g.tenor.com/v1/search?q=cat&key=${process.env.TENORKEY}&limit=8`;
+            let response = await fetch(url);
+            let json = await response.json();
+            const index = Math.floor(Math.random() * json.results.length);
+            message.channel.send(json.results[index].url);
         } else if (message.content.startsWith('--help')) {
             message.channel.send(`Escribe '--cookie' para probar suerte`);
         } else if (message.content.startsWith('--hitler')) {
