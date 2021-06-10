@@ -86,12 +86,6 @@ async function gotMessage(message) {
             message.channel.send(json.results[index].url);
         } else if (message.content.startsWith('--help')) {
             message.channel.send(`Escribe '--cookie' para probar suerte`);
-        } else if (message.content.startsWith('--hitler')) {
-            message.channel.send('', {
-                files: [
-                    "./unnamed.png"
-                ]
-            });
         } else if (message.content.startsWith('--')) {
             const msg = message.content.split('--')[1];
             const url = `https://g.tenor.com/v1/search?q=${msg}&key=${process.env.TENORKEY}&limit=8`;
