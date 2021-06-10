@@ -60,7 +60,8 @@ const messages = [
     'Hasta Rexona te abandona',
     "¿Sabías que hace años un estudio demostró que el ser humano tiene la increible capacidad de callarse la boca? Pruébalo",
     "Pon tu opinión en una cuenta de ahorro, a ver si así genera interés",
-    "Quédate con alguien que cree en las galletas de la fortuna. Si cree en esas mierdas también te creerá a ti"
+    "Quédate con alguien que cree en las galletas de la fortuna. Si cree en esas mierdas también te creerá a ti",
+    "Tu sonrisa no ha pasado desapercibida hoy"
 ];
 
 client.on("ready", async () => {
@@ -91,8 +92,9 @@ async function gotMessage(message) {
                     "./unnamed.png"
                 ]
             });
-        } else if (message.content.startsWith('--cagarro')) {
-            const url = `https://g.tenor.com/v1/search?q=cagarro&key=${process.env.TENORKEY}&limit=8`;
+        } else if (message.content.startsWith('--')) {
+            const msg = message.content.split('--')[1];
+            const url = `https://g.tenor.com/v1/search?q=${msg}&key=${process.env.TENORKEY}&limit=8`;
             let response = await fetch(url);
             let json = await response.json();
             const index = Math.floor(Math.random() * json.results.length);
